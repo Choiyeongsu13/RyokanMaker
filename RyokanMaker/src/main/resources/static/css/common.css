@@ -1,0 +1,183 @@
+/* ============================================================
+   otaru-furukawa 공통 스타일시트 (골드 & 화이트)
+   모든 페이지에서 공통으로 불러와서 사용합니다.
+   <link rel="stylesheet" th:href="@{/css/common.css}">
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;500;600&family=Noto+Sans+KR:wght@300;400;500&display=swap');
+
+* { box-sizing: border-box; }
+
+:root {
+  --bg: #FFFFFF;
+  --bg-soft: #F7F5F0;
+  --paper: #FFFFFF;
+  --ink: #26231F;
+  --ink-soft: #6E675C;
+  --ink-faint: #A79E8F;
+  --gold: #B79966;
+  --gold-deep: #8F7748;
+  --gold-pale: #F1E7D3;
+  --line: #EDE6D8;
+  --warn: #B4552E;
+  --warn-bg: #FBEDE6;
+  --serif: 'Noto Serif KR', 'Nanum Myeongjo', serif;
+  --sans: 'Noto Sans KR', -apple-system, sans-serif;
+  --max-width: 1440px;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--sans);
+  color: var(--ink);
+  background: var(--bg);
+  font-weight: 300;
+}
+
+a { color: var(--gold-deep); text-decoration: none; }
+a:hover { color: var(--gold); }
+
+img { max-width: 100%; display: block; }
+
+/* 페이지 공통 래퍼: 최대 너비를 고정하고 가운데 정렬 */
+.page-wrap {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  background: var(--bg);
+}
+
+/* ---------------- 버튼 ---------------- */
+.btn-gold {
+  display: inline-flex; align-items: center; justify-content: center;
+  background: var(--gold); color: #FFFFFF; font-family: var(--sans);
+  font-size: 14px; letter-spacing: 0.08em; padding: 14px 34px; font-weight: 400;
+  border-radius: 0; border: 1px solid var(--gold); white-space: nowrap; cursor: pointer;
+}
+.btn-gold:hover { background: var(--gold-deep); border-color: var(--gold-deep); color: #FFFFFF; }
+.btn-gold:disabled { background: var(--line); border-color: var(--line); color: var(--ink-faint); cursor: not-allowed; }
+
+.btn-line {
+  display: inline-flex; align-items: center; justify-content: center;
+  background: transparent; color: var(--ink); font-family: var(--sans);
+  font-size: 14px; font-weight: 400; letter-spacing: 0.06em; padding: 13px 32px;
+  border-radius: 0; border: 1px solid var(--line); cursor: pointer;
+}
+.btn-line:hover { border-color: var(--gold-deep); color: var(--gold-deep); }
+
+/* ---------------- 헤더 ---------------- */
+.site-header {
+  position: relative; z-index: 5;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 56px; height: 92px;
+  background: var(--bg); border-bottom: 1px solid var(--line);
+}
+.site-header .logo { display: flex; flex-direction: column; line-height: 1.35; }
+.site-header .logo .kanji { font-family: var(--serif); font-size: 22px; letter-spacing: 0.1em; color: var(--ink); font-weight: 400; }
+.site-header .logo .romaji { font-size: 10px; letter-spacing: 0.18em; color: var(--gold-deep); }
+.site-header nav { display: flex; align-items: center; gap: 44px; }
+
+.navlink { color: var(--ink-soft); font-size: 14px; letter-spacing: 0.05em; font-weight: 300; }
+.navlink:hover { color: var(--gold-deep); }
+.navlink.active { color: var(--gold-deep); border-bottom: 1px solid var(--gold-deep); padding-bottom: 4px; }
+
+/* ---------------- 푸터 ---------------- */
+.site-footer {
+  margin-top: 40px; background: var(--bg); border-top: 1px solid var(--line);
+  color: var(--ink); padding: 64px 56px 32px; display: flex; flex-direction: column; gap: 40px;
+}
+.site-footer .footer-top { display: flex; justify-content: space-between; align-items: flex-start; }
+.site-footer .brand { display: flex; flex-direction: column; gap: 12px; }
+.site-footer .brand .kanji { font-family: var(--serif); font-weight: 400; font-size: 24px; letter-spacing: 0.1em; }
+.site-footer .brand .addr { font-size: 13px; font-weight: 300; color: var(--ink-soft); line-height: 1.8; }
+.site-footer nav { display: flex; gap: 32px; }
+.site-footer nav a { color: var(--ink-soft); font-size: 13px; }
+.site-footer .divider { height: 1px; background: var(--line); }
+.site-footer .copyright { font-size: 12px; color: var(--ink-faint); }
+
+/* ---------------- 페이지 상단 타이틀 ---------------- */
+.page-title {
+  padding: 56px 56px 8px; display: flex; flex-direction: column;
+  align-items: center; text-align: center; gap: 16px;
+}
+.page-title .crumb { font-size: 12px; color: var(--ink-faint); letter-spacing: 0.05em; }
+.page-title h1 { font-family: var(--serif); font-weight: 400; font-size: 36px; color: var(--ink); margin: 0; }
+.page-title .rule { width: 36px; height: 1px; background: var(--gold); }
+.page-title .desc { font-size: 15px; font-weight: 300; color: var(--ink-soft); max-width: 560px; line-height: 1.8; margin: 0; }
+.plan-badge {
+  display: inline-flex; align-items: center; font-size: 12px; font-weight: 400; letter-spacing: 0.06em;
+  color: var(--gold-deep); border: 1px solid var(--gold-pale); background: var(--gold-pale);
+  padding: 7px 16px; border-radius: 20px;
+}
+
+/* ---------------- 검색 / 조건 바 ---------------- */
+.search-bar {
+  background: var(--bg-soft); border: 1px solid var(--line); padding: 28px 32px;
+  display: flex; align-items: center; gap: 0;
+}
+.search-field { display: flex; flex-direction: column; gap: 8px; padding: 0 32px; border-right: 1px solid var(--line); }
+.search-field:first-child { padding-left: 0; flex: 1.3; }
+.search-field:last-of-type { border-right: none; }
+.field-label { font-size: 11px; letter-spacing: 0.1em; color: var(--ink-faint); }
+.field-value { font-size: 15px; color: var(--ink); font-family: var(--serif); font-weight: 400; }
+.field-icon { flex: none; }
+
+/* ---------------- 섹션 구분 태그 (① 객실 선택 등) ---------------- */
+.section-tag { display: flex; align-items: center; gap: 16px; padding: 0 56px; margin: 48px 0 32px; }
+.section-tag .line { flex: 1; height: 1px; background: var(--line); }
+.section-tag .num {
+  display: flex; align-items: center; justify-content: center; width: 26px; height: 26px; border-radius: 50%;
+  background: var(--gold); color: #fff; font-size: 12px; font-weight: 400; flex: none;
+}
+.section-tag .label { font-family: var(--serif); font-size: 19px; color: var(--ink); font-weight: 400; white-space: nowrap; }
+
+/* ---------------- 플랜 카드 (플랜 선택 페이지) ---------------- */
+.plan-grid { padding: 40px 56px 0; display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 36px; }
+.plan-card { border: 1px solid var(--line); background: var(--paper); display: flex; flex-direction: column; }
+.plan-card .thumb { width: 100%; height: 230px; overflow: hidden; }
+.plan-card .thumb img { width: 100%; height: 100%; object-fit: cover; }
+.plan-card .body { padding: 26px 26px 28px; display: flex; flex-direction: column; gap: 14px; flex: 1; }
+.plan-card .incl-row { display: flex; flex-wrap: wrap; gap: 8px; }
+.incl {
+  display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 400; color: var(--ink-soft);
+  border: 1px solid var(--line); background: var(--bg-soft); padding: 6px 12px; border-radius: 20px;
+}
+.incl.on { color: var(--gold-deep); border-color: var(--gold-pale); background: var(--gold-pale); }
+.plan-card h3 { font-family: var(--serif); font-weight: 400; font-size: 20px; color: var(--ink); margin: 0; }
+.plan-card p { font-size: 13px; font-weight: 300; line-height: 1.8; color: var(--ink-soft); margin: 0; }
+.plan-card .price-row { display: flex; align-items: center; justify-content: space-between; margin-top: auto; padding-top: 6px; }
+.plan-card .price-row .from { font-size: 11px; color: var(--ink-faint); display: block; }
+.plan-card .price-row .amount { font-family: var(--serif); font-size: 20px; color: var(--ink); }
+.plan-card .price-row .amount .unit { font-size: 12px; font-family: var(--sans); color: var(--ink-faint); }
+
+/* ---------------- 객실별 예약 캘린더 표 ---------------- */
+.cal-table { border-collapse: collapse; width: 100%; }
+.cal-table th, .cal-table td { border: 1px solid var(--line); text-align: center; padding: 10px 6px; }
+.cal-table th { background: var(--bg-soft); font-weight: 400; font-size: 12px; color: var(--ink-soft); }
+.cal-table td.roomname { text-align: left; font-family: var(--serif); font-size: 14px; color: var(--ink); background: var(--bg-soft); padding-left: 16px; white-space: nowrap; }
+.cal-cell { font-size: 13px; }
+.cal-cell .status { font-size: 14px; }
+.cal-cell .price { font-size: 11px; color: var(--ink-faint); display: block; margin-top: 2px; }
+.status-ok { color: var(--ink); font-weight: 500; }
+.status-ask { color: var(--gold-deep); font-weight: 500; }
+.status-no { color: var(--ink-faint); }
+.cal-legend { display: flex; gap: 24px; margin-top: 16px; font-size: 12px; color: var(--ink-soft); }
+
+/* ---------------- 온천 시간대 선택 표 ---------------- */
+.slot-table { border-collapse: collapse; width: 100%; }
+.slot-table th, .slot-table td { border: 1px solid var(--line); text-align: center; padding: 12px 6px; }
+.slot-table th { background: var(--bg-soft); font-size: 12px; font-weight: 400; color: var(--ink-soft); }
+.slot-table td.roomname { text-align: left; font-family: var(--serif); font-size: 14px; color: var(--ink); background: var(--bg-soft); padding-left: 16px; }
+.slot-btn { font-size: 12px; font-weight: 400; padding: 8px 10px; width: 100%; border: 1px solid var(--gold-pale); background: #FFFFFF; color: var(--gold-deep); cursor: pointer; }
+.slot-btn:hover { background: var(--gold-pale); }
+.slot-btn.taken { background: var(--bg-soft); color: var(--ink-faint); border-color: var(--line); cursor: not-allowed; }
+
+/* ---------------- 식사 코스 카드 ---------------- */
+.course-grid { padding: 0 56px 40px; display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 40px; }
+.course-card { border: 1px solid var(--line); display: flex; flex-direction: column; }
+.course-card .thumb { width: 100%; height: 260px; overflow: hidden; }
+.course-card .thumb img { width: 100%; height: 100%; object-fit: cover; }
+.course-card .body { padding: 22px; display: flex; flex-direction: column; gap: 10px; }
+.course-card h4 { font-family: var(--serif); font-weight: 400; font-size: 18px; color: var(--ink); margin: 0; }
+.course-card p { font-size: 13px; font-weight: 300; color: var(--ink-soft); line-height: 1.7; margin: 0; }
+.course-card p.tbd { color: var(--ink-faint); font-style: italic; }
