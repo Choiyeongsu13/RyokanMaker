@@ -6,9 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.mnu.RyokanMaker.Service.Inquiryservice;
+import com.mnu.RyokanMaker.domain.InquiryDTO;
 import com.mnu.RyokanMaker.domain.MemberDTO;
 
 import jakarta.servlet.http.HttpSession;
@@ -49,7 +51,31 @@ public class InquiryController {
 	}
 	
 	//등록처리
-	@PostMapping
+	@PostMapping("/inquiry/write")
+	public String write(HttpSession session, InquiryDTO inquiryDTO) {
+		MemberDTO member=loginMember(session);
+		if(member == null) {
+			return "redirect:/member/login";
+		}
+		inquiryDTO.setUserMail(member.getUserMail());
+		inquiryservice.write(inquiryDTO);
+		return "redirect:/inquiry/list";
+	}
+	//상세 보기(본인 문의만)
+	@GetMapping("/inquiry/view")
+	public String view(HttpSession session, @RequestParam int idx, Model model) {
+		MemberDTO member = loginMember(session);
+		if(member== null) {
+			return "redirect:/member/login";
+		}
+		InquiryDTO inquiry = inquiryservice.select(idx);
+		if(inquiry == null || !inquiry.getUserMail().equals(member.getUserMail())) {
+			return "redirect:/inquiry/list";
+		}
+		
+		model.addAttribute("inquiry",inquiry);
+		return "inquiry/view";
+	}
 	
 	
 
