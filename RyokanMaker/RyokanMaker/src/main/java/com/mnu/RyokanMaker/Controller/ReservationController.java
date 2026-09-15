@@ -1,4 +1,4 @@
-package com.mnu.RyokanMaker.controller;
+package com.mnu.RyokanMaker.Controller;
 
 import java.time.LocalDate;
 import java.util.ArrayList;

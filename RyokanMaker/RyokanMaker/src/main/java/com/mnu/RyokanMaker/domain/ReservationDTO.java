@@ -12,6 +12,8 @@ public class ReservationDTO {
 	private String resvStatus;
 	private String resvpayStatus;
 	private String resvpaymethod;
+	 private String resvArrivalTime; // 도착 예정 시간 (선택)
+	    private String resvRequest;   
 	
 
 }
